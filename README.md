@@ -13,3 +13,4 @@ Sistema de pedidos.
 ## Modelagem
 
 - [C4 model](https://c4model.com/): notação para desenho da arquitetura de sistemas.
+- [Mermaid](https://mermaid.live/): Ferramenta de diagramação e gráficos, baseado em código.
