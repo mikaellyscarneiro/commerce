@@ -7,6 +7,22 @@ Sistema de pedidos.
 # Informações do Sistema
 
 - Cada microsserviço é isolado, têm o seu próprio banco de dados.
+- Arquitetura das APIs seguia a definição da [Onion Architecture](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/) de Jeffrey Palermo. 
+
+# COMO EXECUTAR O PROJETO
+
+- Na pasta `/src` execute o comando para fazer o *build* do Docker Compose.
+
+```shell
+docker-compose build
+```
+
+- Ainda na pasta `/src`, ultilize o comando a seguir para executar o container.
+
+```shell
+docker-compose -p commerce-container up
+```
+
 
 # REFERÊNCIAS
 

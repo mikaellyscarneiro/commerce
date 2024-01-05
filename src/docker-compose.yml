@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  products-api:
+    container_name: products-api
+    image: products-api:latest
+    build:
+      context: ./Commerce.Products/Commerce.Products.api
+      dockerfile: Dockerfile
+    networks:
+      - services-network
+    ports:
+      - "7010:80"
+      - "7011:443"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      RabbitMQ__HostName: 'rabbitmq'
+      RabbitMQ__Port: '5672'
+      RabbitMQ__UserName: 'commerce_service'
+      RabbitMQ__Password: 'test_rabbitmq'
+      PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-products;Port=5432;Database=ProductsDb;User Id=products_service;Password=test_db;'
+
+  stock-alert-api:
+    container_name: stock-alert-api
+    image: stock-alert-api:latest
+    build:
+      context: ./Commerce.StockAlert/Commerce.StockAlert.api
+      dockerfile: Dockerfile
+    networks:
+      - services-network
+    ports:
+      - "7020:80"
+      - "7021:443"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      RabbitMQ__HostName: 'rabbitmq'
+      RabbitMQ__Port: '5672'
+      RabbitMQ__UserName: 'commerce_service'
+      RabbitMQ__Password: 'test_rabbitmq'
+      PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-stock-alert;Port=5432;Database=StockAlertDb;User Id=stock_alert_service;Password=test_db;'
+
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    container_name: 'rabbitmq'
+    ports:
+      - '5672:5672'
+      - '15672:15672'  # Management Plugin
+    environment:
+      RABBITMQ_DEFAULT_USER: 'commerce_service'
+      RABBITMQ_DEFAULT_PASS: 'test_rabbitmq'
+
+  postgresql-products:
+    image: postgres:16.1
+    container_name: postgresql-products
+    environment:
+      POSTGRES_DB: 'db_products'
+      POSTGRES_USER: 'products_service'
+      POSTGRES_PASSWORD: 'test_db'
+    ports:
+      - "5432:5432"
+    networks:
+      - services-network
+
+  postgresql-stock-alert:
+    image: postgres:16.1
+    container_name: postgresql-stock-alert
+    environment:
+      POSTGRES_DB: 'db_stock_alert'
+      POSTGRES_USER: 'stock_alert_service'
+      POSTGRES_PASSWORD: 'test_db'
+    ports:
+      - "5433:5432"
+    networks:
+      - services-network
+
+networks:
+  services-network:
