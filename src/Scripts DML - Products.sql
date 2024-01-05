@@ -3,7 +3,7 @@
 -- ###################################################
 
 -- Função para definir created_at e updated_at durante a inserção. Uma vez criado, será reaproveitado para todas as triggers.
-CREATE OR REPLACE FUNCTION fn_set_created_at()
+CREATE OR REPLACE FUNCTION db_products.public.fn_set_created_at()
 RETURNS TRIGGER AS $$
 BEGIN
     NEW.created_at := CURRENT_TIMESTAMP;
@@ -13,7 +13,7 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- Função para atualizar updated_at durante a atualização. Uma vez criado, será reaproveitado para todas as triggers.
-CREATE OR REPLACE FUNCTION fn_set_updated_at()
+CREATE OR REPLACE FUNCTION db_products.public.fn_set_updated_at()
 RETURNS TRIGGER AS $$
 BEGIN
     NEW.created_at := OLD.created_at;
@@ -25,44 +25,44 @@ $$ LANGUAGE plpgsql;
 -- ###################################################
 -- Criação da tabela 'brand'
 -- ###################################################
-CREATE TABLE db_products.brand (
-    id UUID PRIMARY KEY CONSTRAINT pk_brand_id,
+CREATE TABLE db_products.public.brand (
+    id UUID CONSTRAINT pk_brand_id PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TRIGGER tg_brand_created_at
-BEFORE INSERT ON db_products.brand
+BEFORE INSERT ON db_products.public.brand
 FOR EACH ROW EXECUTE FUNCTION fn_set_created_at();
 
 CREATE TRIGGER tg_brand_updated_at
-BEFORE UPDATE ON db_products.brand
+BEFORE UPDATE ON db_products.public.brand
 FOR EACH ROW EXECUTE FUNCTION fn_set_updated_at();
 
 -- ###################################################
 -- Criação da tabela 'category'
 -- ###################################################
-CREATE TABLE db_products.category (
-    id UUID PRIMARY KEY CONSTRAINT pk_category_id,
+CREATE TABLE db_products.public.category (
+    id UUID CONSTRAINT pk_category_id PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE
 );
 
 CREATE TRIGGER tg_category_created_at
-BEFORE INSERT ON db_products.category
+BEFORE INSERT ON db_products.public.category
 FOR EACH ROW EXECUTE FUNCTION fn_set_created_at();
 
 CREATE TRIGGER tg_category_updated_at
-BEFORE UPDATE ON db_products.category
+BEFORE UPDATE ON db_products.public.category
 FOR EACH ROW EXECUTE FUNCTION fn_set_updated_at();
 
 -- ###################################################
 -- Criação da tabela 'product'
 -- ###################################################
-CREATE TABLE db_products.product (
-    id UUID PRIMARY KEY CONSTRAINT pk_product_id,
+CREATE TABLE db_products.public.product (
+    id UUID CONSTRAINT pk_product_id PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     sku VARCHAR(255) UNIQUE NOT NULL,
@@ -76,12 +76,12 @@ CREATE TABLE db_products.product (
 );
 
 CREATE TRIGGER tg_product_created_at
-BEFORE INSERT ON db_products.product
+BEFORE INSERT ON db_products.public.product
 FOR EACH ROW EXECUTE FUNCTION fn_set_created_at();
 
 CREATE TRIGGER tg_product_updated_at
-BEFORE UPDATE ON db_products.product
+BEFORE UPDATE ON db_products.public.product
 FOR EACH ROW EXECUTE FUNCTION fn_set_updated_at();
 
 -- Criação de índice UNIQUE para a coluna 'sku' na tabela 'product'
-CREATE UNIQUE INDEX idx_product_sku ON product(sku);
+CREATE UNIQUE INDEX idx_product_sku ON db_products.public.product(sku);
