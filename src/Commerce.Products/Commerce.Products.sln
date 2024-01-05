@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.Products.Api", "Commerce.Products.Api\Commerce.Products.Api.csproj", "{F87C61EE-A104-45C1-BEC8-3C004E56D6A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F87C61EE-A104-45C1-BEC8-3C004E56D6A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F87C61EE-A104-45C1-BEC8-3C004E56D6A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F87C61EE-A104-45C1-BEC8-3C004E56D6A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F87C61EE-A104-45C1-BEC8-3C004E56D6A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {595CA158-AF06-47B0-B232-CC47FC9D87CA}
+	EndGlobalSection
+EndGlobal

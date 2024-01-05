@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  products-api:
+    container_name: products-api
+    image: products-api:latest
+    build:
+      context: ./Commerce.Products/Commerce.Products.api
+      dockerfile: Dockerfile
+    networks:
+      - services-network
+    ports:
+      - "7010:80"
+      - "7011:443"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      RabbitMQ__HostName: 'rabbitmq'
+      RabbitMQ__Port: '5672'
+      RabbitMQ__UserName: 'commerce-service'
+      RabbitMQ__Password: 'ziBE0cxruOs:'
+  
+  stock-alert-api:
+    container_name: stock-alert-api
+    image: stock-alert-api:latest
+    build:
+      context: ./Commerce.StockAlert/Commerce.StockAlert.api
+      dockerfile: Dockerfile
+    networks:
+      - services-network
+    ports:
+      - "7020:80"
+      - "7021:443"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      RabbitMQ__HostName: 'rabbitmq'
+      RabbitMQ__Port: '5672'
+      RabbitMQ__UserName: 'commerce-service'
+      RabbitMQ__Password: 'ziBE0cxruOs:'
+
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    container_name: 'rabbitmq'
+    ports:
+      - '5672:5672'
+      - '15672:15672'  # Management Plugin
+    environment:
+      RABBITMQ_DEFAULT_USER: 'commerce-service'
+      RABBITMQ_DEFAULT_PASS: 'ziBE0cxruOs:'
+
+networks:
+  services-network:
