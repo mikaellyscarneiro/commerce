@@ -26,7 +26,7 @@ $$ LANGUAGE plpgsql;
 -- Criação da tabela 'stock_alert'
 -- ###################################################
 CREATE TABLE db_stock_alert.public.stock_alert (
-    id UUID CONSTRAINT pk_stock_alert_id PRIMARY KEY,
+    id UUID CONSTRAINT pk_stock_alert_id PRIMARY KEY DEFAULT gen_random_uuid(),
     product_id UUID NOT NULL,
     quantity BIGINT NOT NULL,
     email VARCHAR(255) NOT NULL,

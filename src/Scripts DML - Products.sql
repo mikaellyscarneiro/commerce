@@ -26,7 +26,7 @@ $$ LANGUAGE plpgsql;
 -- Criação da tabela 'brand'
 -- ###################################################
 CREATE TABLE db_products.public.brand (
-    id UUID CONSTRAINT pk_brand_id PRIMARY KEY,
+    id UUID CONSTRAINT pk_brand_id PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE
@@ -44,7 +44,7 @@ FOR EACH ROW EXECUTE FUNCTION fn_set_updated_at();
 -- Criação da tabela 'category'
 -- ###################################################
 CREATE TABLE db_products.public.category (
-    id UUID CONSTRAINT pk_category_id PRIMARY KEY,
+    id UUID CONSTRAINT pk_category_id PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,
     created_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP WITH TIME ZONE
@@ -62,7 +62,7 @@ FOR EACH ROW EXECUTE FUNCTION fn_set_updated_at();
 -- Criação da tabela 'product'
 -- ###################################################
 CREATE TABLE db_products.public.product (
-    id UUID CONSTRAINT pk_product_id PRIMARY KEY,
+    id UUID CONSTRAINT pk_product_id PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     sku VARCHAR(255) UNIQUE NOT NULL,
