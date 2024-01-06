@@ -1,13 +1,46 @@
+- [INTRODUÇÃO](#introdução)
+- [ARQUITETURA](#arquitetura)
+  - [Informações do Sistema](#informações-do-sistema)
+  - [Camadas](#camadas)
+    - [Domain](#domain)
+    - [Application](#application)
+    - [Infrastructure](#infrastructure)
+    - [Presentation](#presentation)
+- [COMO EXECUTAR O PROJETO](#como-executar-o-projeto)
+- [REFERÊNCIAS](#referências)
+  - [Modelagem](#modelagem)
+
 # INTRODUÇÃO
 
 Sistema de pedidos.
 
 # ARQUITETURA
 
-# Informações do Sistema
+## Informações do Sistema
 
 - Cada microsserviço é isolado, têm o seu próprio banco de dados.
-- Arquitetura das APIs seguia a definição da [Onion Architecture](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/) de Jeffrey Palermo. 
+- Arquitetura das APIs seguia a definição da [Onion Architecture](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/) de Jeffrey Palermo.
+    - As camadas foram separadas em projetos (`.csproj`) diferentes, para que as dependências pudessem ficar isoladas por contexto.
+
+## Camadas
+
+### Domain
+
+Camada que inclui os objetos de negócio e suas regras, é a principal camada da aplicação.
+
+### Application
+
+A camada Application aplica o fluxo de regras que a sua aplicação precisa para trabalhar. Isso não são necessariamente regras de negócio; mas regras comportamentais do fluxo que a aplicação vai trabalhar.
+
+Por exemplo, podemos criar um *application service* para orquestrar um fluxo de cadastro de cliente onde: primeiro salva uma entidade em um repositório; em seguida, escreve um log; publica uma mensagem em uma fila para que outros sistemas saibam do cadastro dessa nova entidade; e, por último, envia um e-mail confirmando o cadastro.
+
+### Infrastructure
+
+Fornece recursos técnicos para as demais camadas, principalmente usando bibliotecas de terceiros (3rd-party libraries).
+
+### Presentation
+
+Contém a lógica de apresentação e interação com o usuário. Usa a camada Application para atender as solicitações do cliente.
 
 # COMO EXECUTAR O PROJETO
 

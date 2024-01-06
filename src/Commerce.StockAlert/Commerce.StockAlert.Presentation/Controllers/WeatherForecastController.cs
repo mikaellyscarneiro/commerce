@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Commerce.StockAlert.Api.Controllers
+namespace Commerce.StockAlert.Presentation.Controllers
 {
     [ApiController]
     [Route("[controller]")]

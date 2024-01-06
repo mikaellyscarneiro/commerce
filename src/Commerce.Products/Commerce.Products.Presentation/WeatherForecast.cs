@@ -1,4 +1,4 @@
-namespace Commerce.Products.Api
+namespace Commerce.Products.Presentation
 {
     public class WeatherForecast
     {

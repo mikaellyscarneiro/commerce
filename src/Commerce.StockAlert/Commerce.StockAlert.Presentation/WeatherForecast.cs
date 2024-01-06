@@ -1,4 +1,4 @@
-namespace Commerce.StockAlert.Api
+namespace Commerce.StockAlert.Presentation
 {
     public class WeatherForecast
     {

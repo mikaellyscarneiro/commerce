@@ -1,5 +1,5 @@
 
-namespace Commerce.StockAlert.Api
+namespace Commerce.Products.Presentation
 {
     public class Program
     {
