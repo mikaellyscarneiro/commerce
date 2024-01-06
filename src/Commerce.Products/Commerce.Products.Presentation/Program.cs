@@ -1,3 +1,4 @@
+using Commerce.Products.Infrastructure.DependencyInjection;
 
 namespace Commerce.Products.Presentation
 {
@@ -9,6 +10,7 @@ namespace Commerce.Products.Presentation
 
             // Add services to the container.
 
+            builder.Services.AddRepositories();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

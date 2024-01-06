@@ -18,7 +18,7 @@ services:
       RabbitMQ__Port: '5672'
       RabbitMQ__UserName: 'commerce_service'
       RabbitMQ__Password: 'test_rabbitmq'
-      PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-products;Port=5432;Database=ProductsDb;User Id=products_service;Password=test_db;'
+      PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-products;Port=5432;Database=db_products;SearchPath=public;User Id=products_service;Password=test_db;'
 
   stock-alert-api:
     container_name: stock-alert-api
@@ -37,7 +37,7 @@ services:
       RabbitMQ__Port: '5672'
       RabbitMQ__UserName: 'commerce_service'
       RabbitMQ__Password: 'test_rabbitmq'
-      PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-stock-alert;Port=5432;Database=StockAlertDb;User Id=stock_alert_service;Password=test_db;'
+      PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-stock-alert;Port=5432;Database=db_stock_alert;SearchPath=public;User Id=stock_alert_service;Password=test_db;'
 
   rabbitmq:
     image: 'rabbitmq:3-management'
