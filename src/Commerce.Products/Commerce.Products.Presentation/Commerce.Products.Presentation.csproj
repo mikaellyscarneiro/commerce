@@ -15,7 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Commerce.Products.Application\Commerce.Products.Application.csproj" />
     <ProjectReference Include="..\Commerce.Products.Infrastructure\Commerce.Products.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Dtos\V1\Products\Request\" />
   </ItemGroup>
 
 </Project>

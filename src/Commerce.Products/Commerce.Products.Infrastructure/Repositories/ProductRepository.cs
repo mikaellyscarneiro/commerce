@@ -34,9 +34,9 @@ namespace Commerce.Products.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<Product> GetByIdAsync(Guid id)
+        public async Task<Product?> GetByIdAsync(Guid id)
         {
-            return await _products.FirstAsync(p => p.Id == id);
+            return await _products.FirstOrDefaultAsync(p => p.Id == id);
         }
 
         public async Task<Product> UpdateAsync(Product product)

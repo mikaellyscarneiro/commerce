@@ -23,7 +23,7 @@ namespace Commerce.Products.Application.Services
             await _productRepository.DeleteAsync(id);
         }
 
-        public async Task<Product> GetByIdAsync(Guid id)
+        public async Task<Product?> GetByIdAsync(Guid id)
         {
             return await _productRepository.GetByIdAsync(id);
         }
