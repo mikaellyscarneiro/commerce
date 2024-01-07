@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.StockAlert.Api", "Commerce.StockAlert.Api\Commerce.StockAlert.Api.csproj", "{8F453696-C1B0-4B2A-8D51-1D726947EE3F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.StockAlert.Presentation", "Commerce.StockAlert.Presentation\Commerce.StockAlert.Presentation.csproj", "{30D4EF67-6DB6-4146-A4FC-EFB06B29F988}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.StockAlert.Domain", "Commerce.StockAlert.Domain\Commerce.StockAlert.Domain.csproj", "{DAB5D0D9-FDFB-4E81-BFA2-8D73037F882B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.StockAlert.Infrastructure", "Commerce.StockAlert.Infrastructure\Commerce.StockAlert.Infrastructure.csproj", "{A22645C3-32A2-493B-89C3-D800C16DCA0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.StockAlert.Application", "Commerce.StockAlert.Application\Commerce.StockAlert.Application.csproj", "{6C9D6C73-48C9-49C3-9498-03E5AB438903}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commerce.StockAlert.UnitTests", "Commerce.StockAlert.UnitTests\Commerce.StockAlert.UnitTests.csproj", "{40E55ED3-8B86-43C9-8E29-79341BEBDAAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +19,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8F453696-C1B0-4B2A-8D51-1D726947EE3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8F453696-C1B0-4B2A-8D51-1D726947EE3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8F453696-C1B0-4B2A-8D51-1D726947EE3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8F453696-C1B0-4B2A-8D51-1D726947EE3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30D4EF67-6DB6-4146-A4FC-EFB06B29F988}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30D4EF67-6DB6-4146-A4FC-EFB06B29F988}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30D4EF67-6DB6-4146-A4FC-EFB06B29F988}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30D4EF67-6DB6-4146-A4FC-EFB06B29F988}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAB5D0D9-FDFB-4E81-BFA2-8D73037F882B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAB5D0D9-FDFB-4E81-BFA2-8D73037F882B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAB5D0D9-FDFB-4E81-BFA2-8D73037F882B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAB5D0D9-FDFB-4E81-BFA2-8D73037F882B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A22645C3-32A2-493B-89C3-D800C16DCA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A22645C3-32A2-493B-89C3-D800C16DCA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A22645C3-32A2-493B-89C3-D800C16DCA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A22645C3-32A2-493B-89C3-D800C16DCA0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C9D6C73-48C9-49C3-9498-03E5AB438903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C9D6C73-48C9-49C3-9498-03E5AB438903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C9D6C73-48C9-49C3-9498-03E5AB438903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C9D6C73-48C9-49C3-9498-03E5AB438903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40E55ED3-8B86-43C9-8E29-79341BEBDAAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40E55ED3-8B86-43C9-8E29-79341BEBDAAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40E55ED3-8B86-43C9-8E29-79341BEBDAAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40E55ED3-8B86-43C9-8E29-79341BEBDAAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
