@@ -1,5 +1,5 @@
-﻿using Commerce.Products.Application.Services;
-using Commerce.Products.Application.Services.Interfaces;
+﻿using Commerce.Products.Application.V1.Services;
+using Commerce.Products.Application.V1.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Commerce.Products.Application.DependencyInjection

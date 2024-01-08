@@ -9,7 +9,7 @@ namespace Commerce.Products.Presentation.Dtos.V1.Products.Response
         public string Description { get; set; }
         public string Sku { get; set; }
         public long Quantity { get; set; }
-        public Guid BrandId { get; set; }
+        public Guid BrandId { get; set; } 
         public Guid CategoryId { get; set; }
         public DateTimeOffset CreatedAt { get; set; }
         public DateTimeOffset? UpdatedAt { get; set; }
@@ -35,8 +35,11 @@ namespace Commerce.Products.Presentation.Dtos.V1.Products.Response
             UpdatedAt = updatedAt;
         }
 
-        public static ProductDto Convert(Product product)
+        public static ProductDto? Convert(Product? product)
         {
+            if(product == null)
+                return null;
+
             var dto = new ProductDto(product.Id,
                 product.Name,
                 product.Description,
