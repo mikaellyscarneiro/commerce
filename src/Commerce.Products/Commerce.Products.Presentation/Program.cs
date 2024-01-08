@@ -1,5 +1,7 @@
 using Commerce.Products.Infrastructure.DependencyInjection;
 using Commerce.Products.Application.DependencyInjection;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Commerce.Products.Presentation
 {
@@ -15,7 +17,12 @@ namespace Commerce.Products.Presentation
                 .AddRepositories()
                 .AddAppServices();
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            });
+            
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

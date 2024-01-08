@@ -34,5 +34,32 @@
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
         }
+
+        public static Product CreateNew(string name, string description, string sku, long quantity, Guid brandId, Guid categoryId)
+        {
+            var newProduct = new Product(id: default,
+                name,
+                description,
+                sku,
+                quantity,
+                brandId,
+                categoryId,
+                createdAt: default,
+                updatedAt: default);
+
+            return newProduct;
+        }
+
+        public Product Update(string name, string description, string sku, long quantity, Guid brandId, Guid categoryId)
+        {
+           Name = name;
+           Description = description;
+           Sku = sku;
+           Quantity = quantity;
+           BrandId = brandId;
+           CategoryId = categoryId;
+
+            return this;
+        }
     }
 }
