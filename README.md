@@ -1,5 +1,7 @@
 - [INTRODUÇÃO](#introdução)
+- [A FAZER](#a-fazer)
 - [ARQUITETURA](#arquitetura)
+- [Desenho](#desenho)
   - [Informações do Sistema](#informações-do-sistema)
   - [Camadas](#camadas)
     - [Domain](#domain)
@@ -8,13 +10,27 @@
     - [Presentation](#presentation)
 - [COMO EXECUTAR O PROJETO](#como-executar-o-projeto)
 - [REFERÊNCIAS](#referências)
+  - [Versionamento](#versionamento)
   - [Modelagem](#modelagem)
 
 # INTRODUÇÃO
 
-Sistema de pedidos.
+Sistema de controle de estoque.
+
+# A FAZER
+
+Este projeto está em desenvolvimento. As seguintes tarefas precisam ser feitas para a conclusão.
+
+- Validações de negócio na API Products e testes de unidade.
+- Publicação de eventos de atualização de produtos no RabbitMQ.
+- Implementação do microsserviço Stock Alert: consumir fila do RabbitMQ e disparar e-mail para o Gestor de Produtos através do SendGrid, caso o estoque esteja abaixo do configurado no alerta.
+- Implementação do API Gateway.
 
 # ARQUITETURA
+
+# Desenho
+
+![Desenho da Arquitetura](./docs/assets/images/desenho-arquitetura.png)
 
 ## Informações do Sistema
 
@@ -58,6 +74,10 @@ docker-compose -p commerce-container up
 
 
 # REFERÊNCIAS
+
+## Versionamento
+
+- [Conventional Commits](https://www.conventionalcommits.org/pt-br/v1.0.0-beta.4/): padronização dos *commits*.
 
 ## Modelagem
 
