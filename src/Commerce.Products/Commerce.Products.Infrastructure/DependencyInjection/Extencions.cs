@@ -16,6 +16,9 @@ namespace Commerce.Products.Infrastructure.DependencyInjection
             // IConfiguration puxa as informações do appsettings.json
             services.AddDbContext<ProductsDbContext>(options => options.UseNpgsql(productsConnectionString));
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
+
+
 
             return services;
         }

@@ -1,7 +1,5 @@
-﻿using Commerce.Products.Application.V1.Dtos.Products.Request;
+﻿using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
 using Commerce.Products.Application.V1.Services.Interfaces;
-using Commerce.Products.Presentation.Dtos.V1.Products.Request;
-using Commerce.Products.Presentation.Dtos.V1.Products.Response;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Commerce.Products.Presentation.Controllers

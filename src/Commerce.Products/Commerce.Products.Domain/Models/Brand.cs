@@ -15,5 +15,21 @@
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
         }
+
+        public static Brand CreateNew(string name)
+        {
+            var newBrand = new Brand(id: default,
+                name,
+                createdAt: default,
+                updatedAt: default);
+
+            return newBrand;
+        }
+
+        public Brand Update(string name)
+        {
+            Name = name;
+            return this;
+        }
     }
 }

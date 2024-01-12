@@ -1,6 +1,4 @@
-﻿using Commerce.Products.Application.V1.Dtos.Products.Request;
-using Commerce.Products.Presentation.Dtos.V1.Products.Request;
-using Commerce.Products.Presentation.Dtos.V1.Products.Response;
+﻿using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
 
 namespace Commerce.Products.Application.V1.Services.Interfaces
 {
