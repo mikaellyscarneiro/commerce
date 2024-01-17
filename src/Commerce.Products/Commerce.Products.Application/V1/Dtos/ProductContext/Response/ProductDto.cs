@@ -1,6 +1,6 @@
 ﻿using Commerce.Products.Domain.Models;
 
-namespace Commerce.Products.Application.V1.Dtos.ProductContext.Request
+namespace Commerce.Products.Application.V1.Dtos.ProductContext.Response
 {
     public class ProductDto
     {

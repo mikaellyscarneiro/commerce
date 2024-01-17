@@ -9,8 +9,8 @@ namespace Commerce.Products.Presentation.Controllers
 {
 
     [ApiController]
-    [Route("category")]
-    public class CategoryController : ControllerBase
+    [Route("categories")]
+    public class CategoriesController : ControllerBase
     {
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(CategoryDto), StatusCodes.Status200OK)]

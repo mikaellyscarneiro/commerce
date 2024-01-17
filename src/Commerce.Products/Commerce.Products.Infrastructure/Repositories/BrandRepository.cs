@@ -45,7 +45,5 @@ namespace Commerce.Products.Infrastructure.Repositories
             await _dbContext.SaveChangesAsync();
             return await Task.FromResult(updatedBrand.Entity);
         }
-
-
     }
 }

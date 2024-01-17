@@ -1,4 +1,5 @@
 ﻿using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
+using Commerce.Products.Application.V1.Dtos.ProductContext.Response;
 using Commerce.Products.Application.V1.Services.Interfaces;
 using Commerce.Products.Domain.Models;
 using Commerce.Products.Domain.Repositories.Interfaces;
