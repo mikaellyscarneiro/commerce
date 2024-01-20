@@ -34,23 +34,5 @@ namespace Commerce.Products.Application.V1.Dtos.ProductContext.Response
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
         }
-
-        public static ProductDto? Convert(Product? product)
-        {
-            if(product == null)
-                return null;
-
-            var dto = new ProductDto(product.Id,
-                product.Name,
-                product.Description,
-                product.Sku,
-                product.Quantity,
-                product.BrandId,
-                product.CategoryId,
-                product.CreatedAt,
-                product.UpdatedAt);
-
-            return dto;
-        }
     }
 }

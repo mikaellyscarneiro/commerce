@@ -16,18 +16,5 @@ namespace Commerce.Products.Application.V1.Dtos.CategoryContext.Response
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
         }
-
-        public static CategoryDto? Convert(Category? category)
-        {
-            if (category == null)
-                return null;
-
-            var dto = new CategoryDto(category.Id,
-                category.Name,
-                category.CreatedAt,
-                category.UpdatedAt);
-
-            return dto;
-        }
     }
 }

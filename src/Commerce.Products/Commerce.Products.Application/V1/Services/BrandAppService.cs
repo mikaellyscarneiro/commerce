@@ -1,5 +1,6 @@
 ﻿using Commerce.Products.Application.V1.Dtos.BrandContext.Request;
 using Commerce.Products.Application.V1.Dtos.BrandContext.Response;
+using Commerce.Products.Application.V1.Extentions.Converters;
 using Commerce.Products.Application.V1.Services.Interfaces;
 using Commerce.Products.Domain.Models;
 using Commerce.Products.Domain.Repositories.Interfaces;
@@ -22,7 +23,7 @@ namespace Commerce.Products.Application.V1.Services
 
             var createdBrand = await _brandRepository.CreateAsync(brandToCreate);
 
-            var dto = BrandDto.Convert(createdBrand) ?? throw new InvalidOperationException("Erro ao converter objeto.");
+            var dto = createdBrand.Convert() ?? throw new InvalidOperationException("Erro ao converter objeto.");
 
             return dto;
         }
@@ -36,23 +37,20 @@ namespace Commerce.Products.Application.V1.Services
         {
             var brand = await _brandRepository.GetByIdAsync(id);
 
-            var dto = BrandDto.Convert(brand);
+            var dto = brand.Convert();
 
             return dto;
         }
 
         public async Task<BrandDto> UpdateAsync(UpdateBrandDto request)
         {
-            var brandFromDatabase = await _brandRepository.GetByIdAsync(request.Id);
-
-            if (brandFromDatabase == null)
-                throw new InvalidOperationException($"Não foi possível atualizar a marca, pois não foi encontrado marca com o ID: {request.Id}");
-
+            var brandFromDatabase = await _brandRepository.GetByIdAsync(request.Id) ?? throw new InvalidOperationException($"Não foi possível atualizar a marca, pois não foi encontrado marca com o ID: {request.Id}");
+           
             brandFromDatabase.Update(request.Name);
 
             var updateBrand = await _brandRepository.UpdateAsync(brandFromDatabase);
 
-            var dto = BrandDto.Convert(updateBrand) ?? throw new InvalidOperationException("Erro ao converter objeto.");
+            var dto = updateBrand.Convert() ?? throw new InvalidOperationException("Erro ao converter objeto.");
 
             return dto;
         }
