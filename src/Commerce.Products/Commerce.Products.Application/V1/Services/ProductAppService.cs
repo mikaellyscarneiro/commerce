@@ -1,9 +1,8 @@
-﻿using Commerce.Products.Application.V1.Dtos.Products.Request;
+﻿using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
+using Commerce.Products.Application.V1.Dtos.ProductContext.Response;
 using Commerce.Products.Application.V1.Services.Interfaces;
 using Commerce.Products.Domain.Models;
 using Commerce.Products.Domain.Repositories.Interfaces;
-using Commerce.Products.Presentation.Dtos.V1.Products.Request;
-using Commerce.Products.Presentation.Dtos.V1.Products.Response;
 
 namespace Commerce.Products.Application.V1.Services
 {

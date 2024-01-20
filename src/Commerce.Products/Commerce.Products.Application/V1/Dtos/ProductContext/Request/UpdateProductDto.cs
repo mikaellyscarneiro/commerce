@@ -1,4 +1,4 @@
-﻿namespace Commerce.Products.Application.V1.Dtos.Products.Request
+﻿namespace Commerce.Products.Application.V1.Dtos.ProductContext.Request
 {
     public class UpdateProductDto
     {

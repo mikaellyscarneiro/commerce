@@ -1,4 +1,4 @@
-﻿namespace Commerce.Products.Presentation.Dtos.V1.Products.Request
+﻿namespace Commerce.Products.Application.V1.Dtos.ProductContext.Request
 {
     public class CreateProductDto
     {

@@ -10,6 +10,9 @@ namespace Commerce.Products.Application.DependencyInjection
         {
 
             services.AddScoped<IProductAppService, ProductAppService>();
+            services.AddScoped<IBrandAppService, BrandAppService>();
+            services.AddScoped<ICategoryAppService, CategoryAppService>();
+
             return services;
         }
     }
