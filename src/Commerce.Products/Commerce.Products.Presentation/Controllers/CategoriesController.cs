@@ -1,13 +1,10 @@
 ﻿using Commerce.Products.Application.V1.Dtos.CategoryContext.Request;
 using Commerce.Products.Application.V1.Dtos.CategoryContext.Response;
-using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
-using Commerce.Products.Application.V1.Services;
 using Commerce.Products.Application.V1.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Commerce.Products.Presentation.Controllers
 {
-
     [ApiController]
     [Route("categories")]
     public class CategoriesController : ControllerBase
@@ -19,8 +16,6 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetByIdAsync(Guid id, [FromServices] ICategoryAppService categoryAppService)
         {
-            try
-            {
                 var category = await categoryAppService.GetByIdAsync(id);
 
                 if (category == null)
@@ -36,15 +31,6 @@ namespace Commerce.Products.Presentation.Controllers
                 }
 
                 return Ok(category);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
         [HttpPost]
@@ -53,20 +39,9 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateAsync(CreateCategoryDto request, [FromServices] ICategoryAppService categoryAppService)
         {
-            try
-            {
                 var createdCategory = await categoryAppService.CreateAsync(request);
 
                 return StatusCode(StatusCodes.Status201Created, createdCategory);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
         [HttpDelete("{id}")]
@@ -76,20 +51,9 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteAsync(Guid id, [FromServices] ICategoryAppService categoryAppService)
         {
-            try
-            {
                 await categoryAppService.DeleteAsync(id);
 
                 return NoContent();
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
         [HttpPut]
@@ -98,44 +62,10 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateAsync(UpdateCategoryDto request, [FromServices] ICategoryAppService categoryAppService)
         {
-            try
-            {
                 var createdCategory = await categoryAppService.UpdateAsync(request);
 
                 return Ok(createdCategory);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
-        private IActionResult ConvertToProblem(InvalidOperationException exception)
-        {
-            var problem = new ProblemDetails
-            {
-                Title = "Requisição inválida",
-                Detail = exception.Message,
-                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
-            };
-
-            return BadRequest(problem);
-        }
-
-        private IActionResult ConvertToProblemInternalServerError()
-        {
-            var problem = new ProblemDetails
-            {
-                Title = "Erro interno",
-                Detail = "Ocorreu um erro interno no servidor.",
-                Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1"
-            };
-
-            return StatusCode(StatusCodes.Status500InternalServerError, problem);
-        }
     }
 }

@@ -1,5 +1,6 @@
-using Commerce.Products.Infrastructure.DependencyInjection;
 using Commerce.Products.Application.DependencyInjection;
+using Commerce.Products.Infrastructure.DependencyInjection;
+using Commerce.Products.Presentation.Extentions.ExceptionHandler;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -28,6 +29,8 @@ namespace Commerce.Products.Presentation
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            app.UseGlobalExceptionHandler<Program>(app.Services);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

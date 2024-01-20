@@ -1,8 +1,5 @@
 ﻿using Commerce.Products.Application.V1.Dtos.BrandContext.Request;
 using Commerce.Products.Application.V1.Dtos.BrandContext.Response;
-using Commerce.Products.Application.V1.Dtos.CategoryContext.Request;
-using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
-using Commerce.Products.Application.V1.Services;
 using Commerce.Products.Application.V1.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,8 +16,6 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> GetByIdAsync(Guid id, [FromServices] IBrandAppService brandAppService)
         {
-            try
-            {
                 var brand = await brandAppService.GetByIdAsync(id);
 
                 if (brand == null)
@@ -36,15 +31,6 @@ namespace Commerce.Products.Presentation.Controllers
                 }
 
                 return Ok(brand);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
         [HttpPost]
@@ -53,20 +39,9 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> CreateAsync(CreateBrandDto request, [FromServices] IBrandAppService brandAppService)
         {
-            try
-            {
                 var createdBrand = await brandAppService.CreateAsync(request);
 
                 return StatusCode(StatusCodes.Status201Created, createdBrand);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
         [HttpDelete("{id}")]
@@ -76,20 +51,9 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteAsync(Guid id, [FromServices] IBrandAppService brandAppService)
         {
-            try
-            {
                 await brandAppService.DeleteAsync(id);
 
                 return NoContent();
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
         }
 
         [HttpPut]
@@ -98,44 +62,9 @@ namespace Commerce.Products.Presentation.Controllers
         [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateAsync(UpdateBrandDto request, [FromServices] IBrandAppService brandAppService)
         {
-            try
-            {
                 var createdBrand = await brandAppService.UpdateAsync(request);
 
                 return Ok(createdBrand);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return ConvertToProblem(ex);
-            }
-            catch (Exception)
-            {
-                return ConvertToProblemInternalServerError();
-            }
-        }
-
-        private IActionResult ConvertToProblem(InvalidOperationException exception)
-        {
-            var problem = new ProblemDetails
-            {
-                Title = "Requisição inválida",
-                Detail = exception.Message,
-                Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4"
-            };
-
-            return BadRequest(problem);
-        }
-
-        private IActionResult ConvertToProblemInternalServerError()
-        {
-            var problem = new ProblemDetails
-            {
-                Title = "Erro interno",
-                Detail = "Ocorreu um erro interno no servidor.",
-                Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1"
-            };
-
-            return StatusCode(StatusCodes.Status500InternalServerError, problem);
         }
     }
 }
