@@ -16,18 +16,5 @@ namespace Commerce.Products.Application.V1.Dtos.BrandContext.Response
             CreatedAt = createdAt;
             UpdatedAt = updatedAt;
         }
-
-        public static BrandDto? Convert(Brand? brand)
-        {
-            if (brand == null)
-                return null;
-
-            var dto = new BrandDto(brand.Id,
-                brand.Name,
-                brand.CreatedAt,
-                brand.UpdatedAt);
-
-            return dto;
-        }
     }
 }

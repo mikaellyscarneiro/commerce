@@ -3,6 +3,7 @@ using Commerce.Products.Application.V1.Dtos.ProductContext.Response;
 using Commerce.Products.Application.V1.Services.Interfaces;
 using Commerce.Products.Domain.Models;
 using Commerce.Products.Domain.Repositories.Interfaces;
+using Commerce.Products.Application.V1.Extentions.Converters;
 
 namespace Commerce.Products.Application.V1.Services
 {
@@ -22,7 +23,7 @@ namespace Commerce.Products.Application.V1.Services
 
             var createdProduct = await _productRepository.CreateAsync(productToCreate);
 
-            var dto = ProductDto.Convert(createdProduct) ?? throw new InvalidOperationException("Erro ao converter objeto.");
+            var dto = createdProduct.Convert() ?? throw new InvalidOperationException("Erro ao converter objeto.");
 
             return dto;
         }
@@ -36,23 +37,20 @@ namespace Commerce.Products.Application.V1.Services
         {
             var product = await _productRepository.GetByIdAsync(id);
 
-            var dto = ProductDto.Convert(product);
+            var dto = product.Convert();
 
             return dto;
         }
 
         public async Task<ProductDto> UpdateAsync(UpdateProductDto request)
         {
-            var productFromDatabase = await _productRepository.GetByIdAsync(request.Id);
-
-            if (productFromDatabase == null)
-                throw new InvalidOperationException($"Não foi possível atualizar o produto, pois não foi encontrado produto com o ID: {request.Id}");
-
+            var productFromDatabase = await _productRepository.GetByIdAsync(request.Id) ?? throw new InvalidOperationException($"Não foi possível atualizar o produto, pois não foi encontrado produto com o ID: {request.Id}");
+            
             productFromDatabase.Update(request.Name, request.Description, request.Sku, request.Quantity, request.BrandId, request.CategoryId);
 
             var updateProduct = await _productRepository.UpdateAsync(productFromDatabase);
 
-            var dto = ProductDto.Convert(updateProduct) ?? throw new InvalidOperationException("Erro ao converter objeto.");
+            var dto = updateProduct.Convert() ?? throw new InvalidOperationException("Erro ao converter objeto.");
 
             return dto;
         }
