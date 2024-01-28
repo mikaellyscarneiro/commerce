@@ -16,6 +16,8 @@ namespace Commerce.Products.Presentation
 
             builder.Services
                 .AddRepositories()
+                .AddConfigurations(builder.Configuration)
+                .AddInfrastructureServices()
                 .AddAppServices();
 
             builder.Services.AddControllers().AddNewtonsoftJson(options =>
