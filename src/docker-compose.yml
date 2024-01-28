@@ -18,6 +18,7 @@ services:
       RabbitMQ__Port: '5672'
       RabbitMQ__UserName: 'commerce_service'
       RabbitMQ__Password: 'test_rabbitmq'
+      RabbitMQ__Exchanges__ProductEvents: 'products'
       PostgreSQL__ConnectionStrings__DefaultConnection: 'Host=postgresql-products;Port=5432;Database=db_products;SearchPath=public;User Id=products_service;Password=test_db;'
 
   stock-alert-api:
