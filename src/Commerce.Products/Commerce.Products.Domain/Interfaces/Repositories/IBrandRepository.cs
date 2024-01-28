@@ -1,6 +1,6 @@
 ﻿using Commerce.Products.Domain.Models;
 
-namespace Commerce.Products.Domain.Repositories.Interfaces
+namespace Commerce.Products.Domain.Interfaces.Repositories
 {
     public interface IBrandRepository
     {

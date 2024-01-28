@@ -1,7 +1,7 @@
 ﻿using Commerce.Products.Application.V1.Dtos.BrandContext.Request;
 using Commerce.Products.Application.V1.Dtos.BrandContext.Response;
 
-namespace Commerce.Products.Application.V1.Services.Interfaces
+namespace Commerce.Products.Application.V1.Interfaces.Services
 {
     public interface IBrandAppService
     {

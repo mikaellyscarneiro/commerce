@@ -1,9 +1,9 @@
 ﻿using Commerce.Products.Application.V1.Dtos.ProductContext.Request;
 using Commerce.Products.Application.V1.Dtos.ProductContext.Response;
-using Commerce.Products.Application.V1.Services.Interfaces;
 using Commerce.Products.Domain.Models;
-using Commerce.Products.Domain.Repositories.Interfaces;
 using Commerce.Products.Application.V1.Extentions.Converters;
+using Commerce.Products.Application.V1.Interfaces.Services;
+using Commerce.Products.Domain.Interfaces.Repositories;
 
 namespace Commerce.Products.Application.V1.Services
 {

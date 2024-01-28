@@ -1,5 +1,5 @@
-﻿using Commerce.Products.Domain.Models;
-using Commerce.Products.Domain.Repositories.Interfaces;
+﻿using Commerce.Products.Domain.Interfaces.Repositories;
+using Commerce.Products.Domain.Models;
 using Commerce.Products.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 

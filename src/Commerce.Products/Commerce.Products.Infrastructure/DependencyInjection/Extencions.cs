@@ -1,4 +1,4 @@
-﻿using Commerce.Products.Domain.Repositories.Interfaces;
+﻿using Commerce.Products.Domain.Interfaces.Repositories;
 using Commerce.Products.Infrastructure.Database;
 using Commerce.Products.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
